@@ -1,23 +1,39 @@
 package shop.mtcoding;
 
+import shop.mtcoding.service.StadiumService;
+
 import java.util.Scanner;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
         // 입력받을 스캐너 인스턴스
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
+            StadiumService stadiumService = StadiumService.getInstance();
+
             // 기능 요청
             System.out.println("어떤 기능을 요청하시겠습니까?");
             String request = scanner.nextLine().trim();
 
+            // 요청, 쿼리스트링 분리
             String[] requestToken = request.split("\\?");
 
+            // 야구장 등록 메소드
             if (requestToken[0].equals("야구장등록")) {
                 System.out.println("야구장 등록 메소드 실행");
+
+                // 경기장 등록 service 메소드 호출
+                try {
+                    String result = stadiumService.경기장등록(requestToken[1]);
+
+                    // 결과 출력 (성공/실패)
+                    System.out.println(result);
+
+                // 쿼리스트링 미입력 시
+                } catch (ArrayIndexOutOfBoundsException ae) {
+                    System.out.println("올바른 쿼리스트링으로 요청 바랍니다. : 야구장등록?name=야구장이름");
+                }
             } else if (requestToken[0].equals("야구장목록")) {
                 System.out.println("야구장 목록 메소드 실행");
             } else if (requestToken[0].equals("팀등록")) {

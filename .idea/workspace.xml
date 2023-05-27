@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c93bd8b1-ee6b-48da-8228-ea991510c0f5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/StadiumDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/shop/mtcoding/dao/StadiumDaoTest.java" afterDir="false" />
+    <list default="true" id="c93bd8b1-ee6b-48da-8228-ea991510c0f5" name="Changes" comment="경기장 등록 DAO 구현">
+      <change afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/StadiumService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/StadiumDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/StadiumDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/shop/mtcoding/dao/StadiumDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/shop/mtcoding/dao/StadiumDaoTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,8 +48,8 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "onboarding.tips.debug.path": "/Users/nomadhuns/IdeaProjects/baseball/src/main/java/shop/mtcoding/Main.java",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -94,7 +96,7 @@
       <workItem from="1684989808834" duration="4000" />
       <workItem from="1685108776831" duration="3329000" />
       <workItem from="1685151367445" duration="4736000" />
-      <workItem from="1685163784474" duration="29000" />
+      <workItem from="1685163784474" duration="1438000" />
     </task>
     <task id="LOCAL-00001" summary="프로젝트 생성">
       <created>1685110781970</created>
@@ -131,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685163730437</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="경기장 등록 DAO 구현">
+      <created>1685163835888</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1685163835888</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,6 +162,7 @@
     <MESSAGE value="gitignore" />
     <MESSAGE value="Model 생성" />
     <MESSAGE value="DBConnection 생성" />
-    <option name="LAST_COMMIT_MESSAGE" value="DBConnection 생성" />
+    <MESSAGE value="경기장 등록 DAO 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="경기장 등록 DAO 구현" />
   </component>
 </project>

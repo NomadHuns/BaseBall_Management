@@ -5,12 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class StadiumDaoTest {
-    private StadiumDAO stadiumDAO;
-
-    @BeforeEach
-    public void init() {
-        stadiumDAO = StadiumDAO.getInstance();
-    }
+    private StadiumDAO stadiumDAO = StadiumDAO.getInstance();
 
     @Test
     public void insert_test() {

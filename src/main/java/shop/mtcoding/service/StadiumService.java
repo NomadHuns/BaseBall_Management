@@ -1,6 +1,9 @@
 package shop.mtcoding.service;
 
 import shop.mtcoding.dao.StadiumDAO;
+import shop.mtcoding.model.Stadium;
+
+import java.util.List;
 
 public class StadiumService {
 
@@ -36,5 +39,31 @@ public class StadiumService {
 
         // 그 외 오류 발생 시
         return "서버에 문제가 발생하였습니다.";
+    }
+
+    public void 경기장조회() {
+
+        // DAO 메소드 호출
+        List<Stadium> stadiumListPS = stadiumDAO.selectAll();
+
+        // 값이 존재할 경우 실행
+        if (!stadiumListPS.isEmpty() | stadiumListPS != null) {
+
+            // 헤더 로우 출력
+            String headRow = "ID    | 경기장            | 등록일";
+            System.out.println(headRow);
+
+            // 순환하면서 출력
+            stadiumListPS.stream().forEach(
+                    stadium -> {
+                        String row = stadium.getId()
+                                    + "     |"
+                                    + stadium.getName()
+                                    + "          |"
+                                    + stadium.getCreatedAt();
+                        System.out.println(row);
+                    }
+            );
+        }
     }
 }

@@ -36,6 +36,7 @@ public class Main {
                 }
             } else if (requestToken[0].equals("야구장목록")) {
                 System.out.println("야구장 목록 메소드 실행");
+                stadiumService.경기장조회();
             } else if (requestToken[0].equals("팀등록")) {
                 System.out.println("팀 등록 메소드 실행");
             } else if (requestToken[0].equals("팀목록")) {

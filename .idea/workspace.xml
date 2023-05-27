@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c93bd8b1-ee6b-48da-8228-ea991510c0f5" name="Changes" comment="경기장 등록 DAO 구현">
-      <change afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/StadiumService.java" afterDir="false" />
+    <list default="true" id="c93bd8b1-ee6b-48da-8228-ea991510c0f5" name="Changes" comment="경기장 등록 Service 구현">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/StadiumDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/StadiumDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/model/Stadium.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/model/Stadium.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/StadiumService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/StadiumService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/shop/mtcoding/dao/StadiumDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/shop/mtcoding/dao/StadiumDaoTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,8 +79,33 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
+    <configuration name="StadiumDaoTest.selectAll_test" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;shop.mtcoding.dao.StadiumDaoTest.selectAll_test&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>true</ForceTestExec>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.StadiumDaoTest.selectAll_test" />
         <item itemvalue="Gradle.StadiumDaoTest.insert_test" />
       </list>
     </recent_temporary>
@@ -96,7 +122,7 @@
       <workItem from="1684989808834" duration="4000" />
       <workItem from="1685108776831" duration="3329000" />
       <workItem from="1685151367445" duration="4736000" />
-      <workItem from="1685163784474" duration="1438000" />
+      <workItem from="1685163784474" duration="3291000" />
     </task>
     <task id="LOCAL-00001" summary="프로젝트 생성">
       <created>1685110781970</created>
@@ -140,7 +166,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685163835888</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="경기장 등록 Service 구현">
+      <created>1685165248051</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1685165248051</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,6 +196,7 @@
     <MESSAGE value="Model 생성" />
     <MESSAGE value="DBConnection 생성" />
     <MESSAGE value="경기장 등록 DAO 구현" />
-    <option name="LAST_COMMIT_MESSAGE" value="경기장 등록 DAO 구현" />
+    <MESSAGE value="경기장 등록 Service 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="경기장 등록 Service 구현" />
   </component>
 </project>

@@ -13,6 +13,18 @@ public class Stadium {
     private String name;
     private Timestamp createdAt;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
     @Builder
     public Stadium(Integer id, String name, Timestamp createdAt) {
         this.id = id;

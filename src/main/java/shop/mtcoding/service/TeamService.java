@@ -59,7 +59,6 @@ public class TeamService {
                 .map(team -> {
                     Connection connection = null;
                     try {
-                        connection = DBConnection.getConnection();
                         return new TeamRespDTO(team, stadiumDAO.selectById(team.getStadiumId()));
                     } catch (Exception e) {
                         throw new RuntimeException(e);

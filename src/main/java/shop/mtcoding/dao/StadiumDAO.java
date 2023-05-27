@@ -65,6 +65,7 @@ public class StadiumDAO {
         return -1;
     }
 
+    // 경기장 목록 조회 메소드
     public List<Stadium> selectAll() {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -120,6 +121,7 @@ public class StadiumDAO {
         return null;
     }
 
+    // ID로 조회하기 메소드
     public Stadium selectById(int stadiumId) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -149,21 +151,6 @@ public class StadiumDAO {
         } catch (Exception e) {
             System.out.println("쿼리문을 실행하는데 실패하였습니다.");
             e.printStackTrace();
-        } finally {
-            try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (Exception e) {
-                System.out.println("자원을 해제하는데 실패하였습니다.");
-                e.printStackTrace();
-            }
         }
         return null;
     }

@@ -1,6 +1,7 @@
 package shop.mtcoding;
 
 import shop.mtcoding.service.StadiumService;
+import shop.mtcoding.service.TeamService;
 
 import java.util.Scanner;
 
@@ -11,6 +12,7 @@ public class Main {
 
         while (true) {
             StadiumService stadiumService = StadiumService.getInstance();
+            TeamService teamService = TeamService.getInstance();
 
             // 기능 요청
             System.out.println("어떤 기능을 요청하시겠습니까?");
@@ -34,11 +36,30 @@ public class Main {
                 } catch (ArrayIndexOutOfBoundsException ae) {
                     System.out.println("올바른 쿼리스트링으로 요청 바랍니다. : 야구장등록?name=야구장이름");
                 }
+
+            // 경기장 조회 메소드
             } else if (requestToken[0].equals("야구장목록")) {
                 System.out.println("야구장 목록 메소드 실행");
+
+                // 경기장 조회 service 메소드 호출
                 stadiumService.경기장조회();
+
+            // 팀 등록 메소드
             } else if (requestToken[0].equals("팀등록")) {
                 System.out.println("팀 등록 메소드 실행");
+
+                // 팀 등록 service 메소드 호출
+                try {
+                    String result = teamService.팀등록(requestToken[1]);
+
+                    // 결과 출력 (성공/실패)
+                    System.out.println(result);
+
+                    // 쿼리스트링 미입력 시
+                } catch (ArrayIndexOutOfBoundsException ae) {
+                    System.out.println("올바른 쿼리스트링으로 요청 바랍니다. : 팀등록?stadiumId=경기장ID&name=팀이름");
+                }
+
             } else if (requestToken[0].equals("팀목록")) {
                 System.out.println("팀 목록 메소드 실행");
             } else if (requestToken[0].equals("선수등록")) {

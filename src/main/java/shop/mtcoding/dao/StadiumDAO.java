@@ -25,7 +25,7 @@ public class StadiumDAO {
     // 경기장 등록 메소드
     public int insert(String name) {
         Connection connection = null;
-        PreparedStatement statement;
+        PreparedStatement statement = null;
 
         // DBConnection 클래스로부터 커넥션 받아오기
         try {
@@ -49,6 +49,18 @@ public class StadiumDAO {
         } catch (Exception e) {
             System.out.println("쿼리문을 실행하는데 실패하였습니다.");
             e.printStackTrace();
+        } finally {
+            try {
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (Exception e) {
+                System.out.println("자원을 해제하는데 실패하였습니다.");
+                e.printStackTrace();
+            }
         }
         return -1;
     }
@@ -107,4 +119,53 @@ public class StadiumDAO {
         }
         return null;
     }
+
+    public Stadium selectById(int stadiumId) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        // DBConnection 클래스로부터 커넥션 받아오기
+        try {
+            connection = DBConnection.getConnection();
+        } catch (Exception e) {
+            System.out.println("DB 접근에 실패하였습니다.");
+            e.printStackTrace();
+        }
+
+        try {
+            String query = "SELECT * FROM stadium WHERE id = ?";
+            statement = connection.prepareStatement(query);
+            statement.setInt(1, stadiumId);
+
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                Timestamp createdAt = resultSet.getTimestamp("created_at");
+                return new Stadium(id, name, createdAt);
+            }
+        } catch (Exception e) {
+            System.out.println("쿼리문을 실행하는데 실패하였습니다.");
+            e.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (Exception e) {
+                System.out.println("자원을 해제하는데 실패하였습니다.");
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
 }

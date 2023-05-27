@@ -1,8 +1,10 @@
 package shop.mtcoding;
 
+import shop.mtcoding.dto.TeamRespDTO;
 import shop.mtcoding.service.StadiumService;
 import shop.mtcoding.service.TeamService;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -60,8 +62,35 @@ public class Main {
                     System.out.println("올바른 쿼리스트링으로 요청 바랍니다. : 팀등록?stadiumId=경기장ID&name=팀이름");
                 }
 
+            // 팀 조회 메소드
             } else if (requestToken[0].equals("팀목록")) {
                 System.out.println("팀 목록 메소드 실행");
+
+                // 팀 조회 service 메소드 호출
+                List<TeamRespDTO> teamRespDTOList = teamService.팀조회();
+
+                // 값이 존재할 경우 실행
+                if (!teamRespDTOList.isEmpty() | teamRespDTOList != null) {
+
+                    // 헤더 로우 출력
+                    String headRow = "ID    | 팀          | 경기장            | 등록일";
+                    System.out.println(headRow);
+
+                    // 순환하면서 출력
+                    teamRespDTOList.stream().forEach(
+                            teamRespDTO -> {
+                                String row = teamRespDTO.getId()
+                                        + "     | "
+                                        + teamRespDTO.getTeamName()
+                                        + "         | "
+                                        + teamRespDTO.getStadiumName()
+                                        + "          | "
+                                        + teamRespDTO.getCreatedAt();
+                                System.out.println(row);
+                            }
+                    );
+                }
+
             } else if (requestToken[0].equals("선수등록")) {
                 System.out.println("선수 등록 메소드 실행");
             } else if (requestToken[0].equals("선수목록")) {

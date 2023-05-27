@@ -14,6 +14,22 @@ public class Team {
     private String name;
     private Timestamp createdAt;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public Integer getStadiumId() {
+        return stadiumId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
     @Builder
     public Team(Integer id, Integer stadiumId, String name, Timestamp createdAt) {
         this.id = id;

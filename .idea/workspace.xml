@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c93bd8b1-ee6b-48da-8228-ea991510c0f5" name="Changes" comment="Model 생성">
-      <change afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/_core/DBConnection.java" afterDir="false" />
+    <list default="true" id="c93bd8b1-ee6b-48da-8228-ea991510c0f5" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/StadiumDAO.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/java/shop/mtcoding/dao/StadiumDaoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,19 +35,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/nomadhuns/IdeaProjects/baseball/src/main/java/shop/mtcoding/Main.java&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "onboarding.tips.debug.path": "/Users/nomadhuns/IdeaProjects/baseball/src/main/java/shop/mtcoding/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="StadiumDaoTest.insert_test" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -93,7 +93,8 @@
       <workItem from="1684923498929" duration="291000" />
       <workItem from="1684989808834" duration="4000" />
       <workItem from="1685108776831" duration="3329000" />
-      <workItem from="1685151367445" duration="4650000" />
+      <workItem from="1685151367445" duration="4736000" />
+      <workItem from="1685163784474" duration="29000" />
     </task>
     <task id="LOCAL-00001" summary="프로젝트 생성">
       <created>1685110781970</created>
@@ -123,7 +124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685112258561</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="DBConnection 생성">
+      <created>1685163730437</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1685163730437</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,6 +152,7 @@
     <MESSAGE value="프로젝트 생성" />
     <MESSAGE value="gitignore" />
     <MESSAGE value="Model 생성" />
-    <option name="LAST_COMMIT_MESSAGE" value="Model 생성" />
+    <MESSAGE value="DBConnection 생성" />
+    <option name="LAST_COMMIT_MESSAGE" value="DBConnection 생성" />
   </component>
 </project>

@@ -126,4 +126,39 @@ public class TeamDAO {
         }
         return null;
     }
+
+    // ID로 조회
+    public Team selectById(int stadiumIdReq) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        // DBConnection 클래스로부터 커넥션 받아오기
+        try {
+            connection = DBConnection.getConnection();
+        } catch (Exception e) {
+            System.out.println("DB 접근에 실패하였습니다.");
+            e.printStackTrace();
+        }
+
+        try {
+            String query = "SELECT * FROM team WHERE id = ?";
+            statement = connection.prepareStatement(query);
+            statement.setInt(1, stadiumIdReq);
+
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                int stadiumId = resultSet.getInt("stadium_id");
+                String name = resultSet.getString("name");
+                Timestamp createdAt = resultSet.getTimestamp("created_at");
+                return new Team(id, stadiumId, name, createdAt);
+            }
+        } catch (Exception e) {
+            System.out.println("쿼리문을 실행하는데 실패하였습니다.");
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

@@ -1,5 +1,6 @@
 package shop.mtcoding;
 
+import shop.mtcoding.dto.PlayerRespDTO;
 import shop.mtcoding.dto.TeamRespDTO;
 import shop.mtcoding.service.PlayerService;
 import shop.mtcoding.service.StadiumService;
@@ -109,8 +110,48 @@ public class Main {
                     System.out.println("올바른 쿼리스트링으로 요청 바랍니다. : 선수등록?teamId=팀ID&name=선수명&position=포지션");
                 }
 
+            // 선수 목록 조화 메소드
             } else if (requestToken[0].equals("선수목록")) {
                 System.out.println("선수 목록 메소드 실행");
+
+                // 선수 조회 service 메소드 호출
+                try {
+                    List<PlayerRespDTO> playerRespDTOList = playerService.선수조회(requestToken[1]);
+
+                    // 결과 출력
+                    // 값이 존재할 경우 실행
+                    if (!playerRespDTOList.isEmpty() | playerRespDTOList != null) {
+
+                        // 헤더 로우 출력
+                        String headRow = "ID    | 팀          | 선수명        | 포지션      | 등록일";
+                        System.out.println(headRow);
+
+                        // 순환하면서 출력
+                        playerRespDTOList.stream().forEach(
+                                playerRespDTO -> {
+                                    String row = playerRespDTO.getId()
+                                            + "     | "
+                                            + playerRespDTO.getTeamName()
+                                            + "         | "
+                                            + playerRespDTO.getPlayerName()
+                                            + "         | "
+                                            + playerRespDTO.getPosition()
+                                            + "      | "
+                                            + playerRespDTO.getCreatedAt();
+                                    System.out.println(row);
+                                }
+                        );
+                    }
+
+                    // 쿼리스트링 미입력 시
+                } catch (ArrayIndexOutOfBoundsException ae) {
+                    System.out.println("올바른 쿼리스트링으로 요청 바랍니다. : 선수목록?teamId=팀ID");
+                }
+
+
+
+
+
             } else if (requestToken[0].equals("퇴출등록")) {
                 System.out.println("퇴출 등록 메소드 실행");
             } else if (requestToken[0].equals("퇴출목록")) {

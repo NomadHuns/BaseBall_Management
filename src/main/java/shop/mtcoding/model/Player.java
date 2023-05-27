@@ -15,6 +15,26 @@ public class Player {
     private String position;
     private Timestamp createdAt;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public Integer getTeamId() {
+        return teamId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
     @Builder
     public Player(Integer id, Integer teamId, String name, String position, Timestamp createdAt) {
         this.id = id;

@@ -4,7 +4,9 @@ import shop.mtcoding._core.DBConnection;
 import shop.mtcoding.dao.PlayerDAO;
 import shop.mtcoding.dao.StadiumDAO;
 import shop.mtcoding.dao.TeamDAO;
+import shop.mtcoding.dto.PlayerRespDTO;
 import shop.mtcoding.dto.TeamRespDTO;
+import shop.mtcoding.model.Player;
 import shop.mtcoding.model.Team;
 
 import java.sql.Connection;
@@ -16,6 +18,7 @@ public class PlayerService {
 
     private static PlayerService instance;
     private static PlayerDAO playerDAO = PlayerDAO.getInstance();
+    private static TeamDAO teamDAO = TeamDAO.getInstance();
 
     // 생성자 호출 불가
     private PlayerService() {}
@@ -52,6 +55,43 @@ public class PlayerService {
 
         // 그 외 오류 발생 시
         return "서버에 문제가 발생하였습니다.";
+    }
+
+
+    public List<PlayerRespDTO> 선수조회(String queryString) {
+        String[] fields = queryString.split("=");
+
+        // 쿼리스트링 제대로 입력되지 않았을 경우
+        if (!fields[0].equals("teamId")) {
+            System.out.println("올바른 쿼리스트링으로 요청 바랍니다. : 선수목록?teamId=팀ID");
+            return null;
+        }
+
+        // 쿼리스트링 제대로 입력되었을 경우
+            // 팀 목록 DAO 메소드 호출
+            List<Player> teamListPS = playerDAO.selectAll(Integer.parseInt(fields[1]));
+
+            // stadiumDAO.selectById 메소드를 사용하여 조인
+            List<PlayerRespDTO> playerRespDTOList = teamListPS.stream()
+                    .map(player -> {
+                        Connection connection = null;
+                        try {
+                            return new PlayerRespDTO(player, teamDAO.selectById(player.getTeamId()));
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        } finally {
+                            if (connection != null) {
+                                try {
+                                    connection.close();
+                                } catch (SQLException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                    })
+                    .collect(Collectors.toList());
+
+        return playerRespDTOList;
     }
 
 }

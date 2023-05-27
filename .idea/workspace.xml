@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c93bd8b1-ee6b-48da-8228-ea991510c0f5" name="Changes" comment="팀 목록 기능 구현">
-      <change afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/PlayerDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/PlayerService.java" afterDir="false" />
+    <list default="true" id="c93bd8b1-ee6b-48da-8228-ea991510c0f5" name="Changes" comment="선수 등록 기능 구현">
+      <change afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dto/PlayerRespDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/StadiumDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/StadiumDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/PlayerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/PlayerDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/TeamDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/TeamDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/TeamService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/TeamService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/PlayerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/PlayerService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +57,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="shop.mtcoding.dto" />
       <recent name="shop.mtcoding.service" />
       <recent name="shop.mtcoding.dao" />
     </key>
@@ -129,7 +130,7 @@
       <workItem from="1684989808834" duration="4000" />
       <workItem from="1685108776831" duration="3329000" />
       <workItem from="1685151367445" duration="4736000" />
-      <workItem from="1685163784474" duration="11185000" />
+      <workItem from="1685163784474" duration="13265000" />
     </task>
     <task id="LOCAL-00001" summary="프로젝트 생성">
       <created>1685110781970</created>
@@ -201,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685192825072</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="선수 등록 기능 구현">
+      <created>1685194767955</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1685194767955</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,6 +236,7 @@
     <MESSAGE value="경기장 목록 기능 구현" />
     <MESSAGE value="팀 등록 기능 구현" />
     <MESSAGE value="팀 목록 기능 구현" />
-    <option name="LAST_COMMIT_MESSAGE" value="팀 목록 기능 구현" />
+    <MESSAGE value="선수 등록 기능 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="선수 등록 기능 구현" />
   </component>
 </project>

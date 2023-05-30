@@ -22,7 +22,7 @@ public class StadiumDaoTest {
     @Test
     public void selectAll_test() {
         // when
-        List<Stadium> stadiumList = stadiumDAO.selectAll();
+        List<Stadium> stadiumList = stadiumDAO.findAll();
 
     }
 }

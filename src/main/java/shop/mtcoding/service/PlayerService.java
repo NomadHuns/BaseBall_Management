@@ -45,7 +45,7 @@ public class PlayerService {
         String nameValue = fields[1].split("=")[1];
         String positionValue = fields[2].split("=")[1];
 
-        if (playerDAO.selectByTeamIdAndPosition(Integer.parseInt(teamIdValue), positionValue) != null) {
+        if (playerDAO.findByTeamIdAndPosition(Integer.parseInt(teamIdValue), positionValue) != null) {
             return "해당 팀에 이미 동일한 포지션에 선수가 존재합니다.";
         }
 
@@ -70,14 +70,14 @@ public class PlayerService {
 
         // 쿼리스트링 제대로 입력되었을 경우
             // 팀 목록 DAO 메소드 호출
-            List<Player> teamListPS = playerDAO.selectAll(Integer.parseInt(fields[1]));
+            List<Player> teamListPS = playerDAO.findAll(Integer.parseInt(fields[1]));
 
             // stadiumDAO.selectById 메소드를 사용하여 조인
             List<PlayerRespDTO> playerRespDTOList = teamListPS.stream()
                     .map(player -> {
                         Connection connection = null;
                         try {
-                            return new PlayerRespDTO(player, teamDAO.selectById(player.getTeamId()));
+                            return new PlayerRespDTO(player, teamDAO.findById(player.getTeamId()));
                         } catch (Exception e) {
                             throw new RuntimeException(e);
                         } finally {
@@ -97,7 +97,7 @@ public class PlayerService {
 
     public PositionRespDTO 포지션별선수조회() {
         // 팀 목록 조회
-        List<Team> teamListPS = teamDAO.selectAll();
+        List<Team> teamListPS = teamDAO.findAll();
 
         // 포지션별 조회
         // 응답할 DTO 생성

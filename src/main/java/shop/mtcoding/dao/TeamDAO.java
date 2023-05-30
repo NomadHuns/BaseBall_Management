@@ -31,6 +31,8 @@ public class TeamDAO {
         Connection connection = null;
         PreparedStatement statement = null;
 
+        int result = -1;
+
         // DBConnection 클래스로부터 커넥션 받아오기
         try {
             connection = DBConnection.getConnection();
@@ -48,9 +50,8 @@ public class TeamDAO {
             statement.setString(2, name);
 
             // 쿼리 실행
-            int result = statement.executeUpdate();
-            // 성공 = 1, 실패 = 0 / -1
-            return result;
+            result = statement.executeUpdate();
+
         } catch (Exception e) {
             System.out.println("쿼리문을 실행하는데 실패하였습니다.");
             e.printStackTrace();
@@ -67,14 +68,17 @@ public class TeamDAO {
                 e.printStackTrace();
             }
         }
-        return -1;
+
+        return result;
     }
 
     // 팀 목록 조회 메소드
-    public List<Team> selectAll() {
+    public List<Team> findAll() {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
+
+        List<Team> teamListPS = new ArrayList<>();
 
         // DBConnection 클래스로부터 커넥션 받아오기
         try {
@@ -93,7 +97,6 @@ public class TeamDAO {
             resultSet = statement.executeQuery();
 
             // 실행 결과 Model로 파싱
-            List<Team> teamListPS = new ArrayList<>();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 int stadiumId = resultSet.getInt("stadium_id");
@@ -103,8 +106,6 @@ public class TeamDAO {
                 teamListPS.add(teamPS);
             }
 
-            // 모델에 담아서 리턴
-            return teamListPS;
         } catch (Exception e) {
             System.out.println("쿼리문을 실행하는데 실패하였습니다.");
             e.printStackTrace();
@@ -124,14 +125,16 @@ public class TeamDAO {
                 e.printStackTrace();
             }
         }
-        return null;
+        return teamListPS;
     }
 
     // ID로 조회
-    public Team selectById(int stadiumIdReq) {
+    public Team findById(int stadiumIdReq) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
+
+        Team teamPS = null;
 
         // DBConnection 클래스로부터 커넥션 받아오기
         try {
@@ -153,12 +156,12 @@ public class TeamDAO {
                 int stadiumId = resultSet.getInt("stadium_id");
                 String name = resultSet.getString("name");
                 Timestamp createdAt = resultSet.getTimestamp("created_at");
-                return new Team(id, stadiumId, name, createdAt);
+                teamPS = new Team(id, stadiumId, name, createdAt);
             }
         } catch (Exception e) {
             System.out.println("쿼리문을 실행하는데 실패하였습니다.");
             e.printStackTrace();
         }
-        return null;
+        return teamPS;
     }
 }

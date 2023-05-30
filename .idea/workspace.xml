@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c93bd8b1-ee6b-48da-8228-ea991510c0f5" name="Changes" comment="선수 방출 목록 조회 기능 구현">
-      <change afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dto/PositionRespDTO.java" afterDir="false" />
+    <list default="true" id="c93bd8b1-ee6b-48da-8228-ea991510c0f5" name="Changes" comment="포지션별 선수 조회 기능 구현">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/OutPlayerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/OutPlayerDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/PlayerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/PlayerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/StadiumDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/StadiumDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/TeamDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/TeamDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/OutPlayerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/OutPlayerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/PlayerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/PlayerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/StadiumService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/StadiumService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/TeamService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/TeamService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/shop/mtcoding/dao/StadiumDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/shop/mtcoding/dao/StadiumDaoTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,23 +62,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/nomadhuns/Developer/JavaProjects/baseball",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "onboarding.tips.debug.path": "/Users/nomadhuns/IdeaProjects/baseball/src/main/java/shop/mtcoding/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/nomadhuns/Developer/JavaProjects/baseball&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/nomadhuns/IdeaProjects/baseball/src/main/java/shop/mtcoding/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="shop.mtcoding.dto" />
@@ -81,7 +86,7 @@
       <recent name="shop.mtcoding.dao" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Gradle.StadiumDaoTest.insert_test">
     <configuration name="StadiumDaoTest.insert_test" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -151,7 +156,8 @@
       <workItem from="1685151367445" duration="4736000" />
       <workItem from="1685163784474" duration="13404000" />
       <workItem from="1685363540166" duration="4000" />
-      <workItem from="1685425897594" duration="10520000" />
+      <workItem from="1685425897594" duration="10706000" />
+      <workItem from="1685451929131" duration="1105000" />
     </task>
     <task id="LOCAL-00001" summary="프로젝트 생성">
       <created>1685110781970</created>
@@ -251,7 +257,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685434214739</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="포지션별 선수 조회 기능 구현">
+      <created>1685440128855</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1685440128855</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,6 +295,7 @@
     <MESSAGE value="선수 목록 조회 기능 구현" />
     <MESSAGE value="선수 방출 등록 기능 구현" />
     <MESSAGE value="선수 방출 목록 조회 기능 구현" />
-    <option name="LAST_COMMIT_MESSAGE" value="선수 방출 목록 조회 기능 구현" />
+    <MESSAGE value="포지션별 선수 조회 기능 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="포지션별 선수 조회 기능 구현" />
   </component>
 </project>

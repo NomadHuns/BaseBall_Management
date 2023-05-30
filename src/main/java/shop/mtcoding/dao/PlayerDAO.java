@@ -23,10 +23,12 @@ public class PlayerDAO {
     }
 
     // 팀 별 포지션 선수 조회
-    public Player selectByTeamIdAndPosition(int teamIdReq, String positionReq) {
+    public Player findByTeamIdAndPosition(int teamIdReq, String positionReq) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
+
+        Player playerPS = null;
 
         // DBConnection 클래스로부터 커넥션 받아오기
         try {
@@ -37,20 +39,23 @@ public class PlayerDAO {
         }
 
         try {
+            // 쿼리문 작성
             String query = "SELECT * FROM player WHERE team_id = ? AND position = ?";
             statement = connection.prepareStatement(query);
             statement.setInt(1, teamIdReq);
             statement.setString(2, positionReq);
 
+            // 쿼리문 실행
             resultSet = statement.executeQuery();
 
+            // 모델로 파싱
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 int teamId = resultSet.getInt("team_id");
                 String name = resultSet.getString("name");
                 String position = resultSet.getString("position");
                 Timestamp createdAt = resultSet.getTimestamp("created_at");
-                return new Player(id, teamId, name, position, createdAt);
+                playerPS = new Player(id, teamId, name, position, createdAt);
             }
         } catch (Exception e) {
             System.out.println("쿼리문을 실행하는데 실패하였습니다.");
@@ -71,7 +76,7 @@ public class PlayerDAO {
                 e.printStackTrace();
             }
         }
-        return null;
+        return playerPS;
     }
 
 
@@ -79,6 +84,8 @@ public class PlayerDAO {
     public int insert(int teamId, String name, String position) {
         Connection connection = null;
         PreparedStatement statement = null;
+
+        int result = -1;
 
         // DBConnection 클래스로부터 커넥션 받아오기
         try {
@@ -98,9 +105,7 @@ public class PlayerDAO {
             statement.setString(3, position);
 
             // 쿼리 실행
-            int result = statement.executeUpdate();
-            // 성공 = 1, 실패 = 0 / -1
-            return result;
+            result = statement.executeUpdate();
         } catch (Exception e) {
             System.out.println("쿼리문을 실행하는데 실패하였습니다.");
             e.printStackTrace();
@@ -117,14 +122,17 @@ public class PlayerDAO {
                 e.printStackTrace();
             }
         }
-        return -1;
+        // 성공 = 1, 실패 = 0 / -1
+        return result;
     }
 
     // 선수 목록 조회 메소드
-    public List<Player> selectAll(int teamIdReq) {
+    public List<Player> findAll(int teamIdReq) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
+
+        List<Player> playerListPS = new ArrayList<>();
 
         // DBConnection 클래스로부터 커넥션 받아오기
         try {
@@ -143,8 +151,7 @@ public class PlayerDAO {
             // 쿼리 실행
             resultSet = statement.executeQuery();
 
-            // 실행 결과 Model로 파싱
-            List<Player> playerListPS = new ArrayList<>();
+            // 모델로 파싱
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 int stadiumId = resultSet.getInt("team_id");
@@ -155,8 +162,6 @@ public class PlayerDAO {
                 playerListPS.add(playerPS);
             }
 
-            // 모델에 담아서 리턴
-            return playerListPS;
         } catch (Exception e) {
             System.out.println("쿼리문을 실행하는데 실패하였습니다.");
             e.printStackTrace();
@@ -176,14 +181,17 @@ public class PlayerDAO {
                 e.printStackTrace();
             }
         }
-        return null;
+
+        return playerListPS;
     }
 
     // ID로 조회하기 메소드
-    public Player selectById(int stadiumId) {
+    public Player findById(int stadiumId) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
+
+        Player playerPS = null;
 
         // DBConnection 클래스로부터 커넥션 받아오기
         try {
@@ -206,7 +214,7 @@ public class PlayerDAO {
                 String name = resultSet.getString("name");
                 String position = resultSet.getString("position");
                 Timestamp createdAt = resultSet.getTimestamp("created_at");
-                return new Player(id, teamId, name, position, createdAt);
+                playerPS = new Player(id, teamId, name, position, createdAt);
             }
         } catch (Exception e) {
             System.out.println("쿼리문을 실행하는데 실패하였습니다.");
@@ -227,13 +235,15 @@ public class PlayerDAO {
                 e.printStackTrace();
             }
         }
-        return null;
+        return playerPS;
     }
 
     // 선수 정보 수정 메소드
     public int updateById(int id, Integer teamId, String name, String position) {
         Connection connection = null;
         PreparedStatement statement = null;
+
+        int result = -1;
 
         // DBConnection 클래스로부터 커넥션 받아오기
         try {
@@ -258,9 +268,8 @@ public class PlayerDAO {
             statement.setInt(4, id);
 
             // 쿼리 실행
-            int result = statement.executeUpdate();
-            // 성공 = 1, 실패 = 0 / -1
-            return result;
+            result = statement.executeUpdate();
+
         } catch (Exception e) {
             System.out.println("쿼리문을 실행하는데 실패하였습니다.");
             e.printStackTrace();
@@ -277,7 +286,7 @@ public class PlayerDAO {
                 e.printStackTrace();
             }
         }
-        return -1;
+        return result;
 
     }
 
@@ -285,6 +294,8 @@ public class PlayerDAO {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
+
+        List<Player> playerListPS = new ArrayList<>();
 
         // DBConnection 클래스로부터 커넥션 받아오기
         try {
@@ -304,7 +315,6 @@ public class PlayerDAO {
             resultSet = statement.executeQuery();
 
             // 실행 결과 Model로 파싱
-            List<Player> playerListPS = new ArrayList<>();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 int stadiumId = resultSet.getInt("team_id");
@@ -314,7 +324,6 @@ public class PlayerDAO {
                 Player playerPS = new Player(id, stadiumId, name, position, createdAt);
                 playerListPS.add(playerPS);
             }
-            return playerListPS;
         } catch (Exception e) {
             System.out.println("쿼리문을 실행하는데 실패하였습니다.");
             e.printStackTrace();
@@ -334,7 +343,7 @@ public class PlayerDAO {
                 e.printStackTrace();
             }
         }
-        return null;
+        return playerListPS;
     }
 
 }

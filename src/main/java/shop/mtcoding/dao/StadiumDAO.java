@@ -27,6 +27,8 @@ public class StadiumDAO {
         Connection connection = null;
         PreparedStatement statement = null;
 
+        int result = -1;
+
         // DBConnection 클래스로부터 커넥션 받아오기
         try {
             connection = DBConnection.getConnection();
@@ -43,9 +45,8 @@ public class StadiumDAO {
             statement.setString(1, name);
 
             // 쿼리 실행
-            int result = statement.executeUpdate();
-            // 성공 = 1, 실패 = 0 / -1
-            return result;
+            result = statement.executeUpdate();
+
         } catch (Exception e) {
             System.out.println("쿼리문을 실행하는데 실패하였습니다.");
             e.printStackTrace();
@@ -62,14 +63,16 @@ public class StadiumDAO {
                 e.printStackTrace();
             }
         }
-        return -1;
+        return result;
     }
 
     // 경기장 목록 조회 메소드
-    public List<Stadium> selectAll() {
+    public List<Stadium> findAll() {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
+
+        List<Stadium> stadiumListPS = new ArrayList<>();
 
         // DBConnection 클래스로부터 커넥션 받아오기
         try {
@@ -88,7 +91,6 @@ public class StadiumDAO {
             resultSet = statement.executeQuery();
 
             // 실행 결과 Model로 파싱
-            List<Stadium> stadiumListPS = new ArrayList<>();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
@@ -97,8 +99,6 @@ public class StadiumDAO {
                 stadiumListPS.add(stadiumPS);
             }
 
-            // 모델에 담아서 리턴
-            return stadiumListPS;
         } catch (Exception e) {
             System.out.println("쿼리문을 실행하는데 실패하였습니다.");
             e.printStackTrace();
@@ -118,14 +118,16 @@ public class StadiumDAO {
                 e.printStackTrace();
             }
         }
-        return null;
+        return stadiumListPS;
     }
 
     // ID로 조회하기 메소드
-    public Stadium selectById(int stadiumId) {
+    public Stadium findById(int stadiumId) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
+
+        Stadium stadiumPS = null;
 
         // DBConnection 클래스로부터 커넥션 받아오기
         try {
@@ -136,23 +138,25 @@ public class StadiumDAO {
         }
 
         try {
+            // 쿼리문 작성
             String query = "SELECT * FROM stadium WHERE id = ?";
             statement = connection.prepareStatement(query);
             statement.setInt(1, stadiumId);
 
+            // 쿼리 실행
             resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 Timestamp createdAt = resultSet.getTimestamp("created_at");
-                return new Stadium(id, name, createdAt);
+                stadiumPS = new Stadium(id, name, createdAt);
             }
         } catch (Exception e) {
             System.out.println("쿼리문을 실행하는데 실패하였습니다.");
             e.printStackTrace();
         }
-        return null;
+        return stadiumPS;
     }
 
 }

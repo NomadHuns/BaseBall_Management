@@ -42,7 +42,7 @@ public class OutPlayerService {
         String reasonValue = fields[1].split("=")[1];
 
         // 선수조회하기
-        Player playerPS = playerDAO.selectById(playerIdValue);
+        Player playerPS = playerDAO.findById(playerIdValue);
         // 선수 조회 실패 실패시 실패 메시지 리턴
         if (playerPS == null) {
             return "존재하지 않는 선수고유번호 입니다. 선수 고유번호를 확인해주세요.";
@@ -68,7 +68,7 @@ public class OutPlayerService {
     public List<OutPlayerRespDTO> 방출선수목록조회() {
 
         // DAO 메소드 호출
-        List<OutPlayerRespDTO> outPlayerRespDTOList = outPlayerDAO.selectAll();
+        List<OutPlayerRespDTO> outPlayerRespDTOList = outPlayerDAO.findAll();
         return outPlayerRespDTOList;
     }
 }

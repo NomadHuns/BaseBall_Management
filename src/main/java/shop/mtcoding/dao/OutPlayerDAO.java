@@ -31,6 +31,8 @@ public class OutPlayerDAO {
         Connection connection = null;
         PreparedStatement statement = null;
 
+        int result = -1;
+
         // DBConnection 클래스로부터 커넥션 받아오기
         try {
             connection = DBConnection.getConnection();
@@ -48,9 +50,8 @@ public class OutPlayerDAO {
             statement.setString(2, reason);
 
             // 쿼리 실행
-            int result = statement.executeUpdate();
-            // 성공 = 1, 실패 = 0 / -1
-            return result;
+            result = statement.executeUpdate();
+
         } catch (Exception e) {
             System.out.println("쿼리문을 실행하는데 실패하였습니다.");
             e.printStackTrace();
@@ -67,14 +68,16 @@ public class OutPlayerDAO {
                 e.printStackTrace();
             }
         }
-        return -1;
+        return result;
     }
 
     // 퇴출 선수 목록 조회 메소드
-    public List<OutPlayerRespDTO> selectAll() {
+    public List<OutPlayerRespDTO> findAll() {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
+
+        List<OutPlayerRespDTO> outPlayerRespDTOList = new ArrayList<>();
 
         // DBConnection 클래스로부터 커넥션 받아오기
         try {
@@ -93,7 +96,6 @@ public class OutPlayerDAO {
             resultSet = statement.executeQuery();
 
             // 실행 결과 DTO로 파싱
-            List<OutPlayerRespDTO> outPlayerRespDTOList = new ArrayList<>();
             while (resultSet.next()) {
                 int id = resultSet.getInt("p.id");
                 String name = resultSet.getString("p.name");
@@ -104,8 +106,6 @@ public class OutPlayerDAO {
                 outPlayerRespDTOList.add(outPlayerRespDTO);
             }
 
-            // 모델에 담아서 리턴
-            return outPlayerRespDTOList;
         } catch (Exception e) {
             System.out.println("쿼리문을 실행하는데 실패하였습니다.");
             e.printStackTrace();
@@ -125,7 +125,8 @@ public class OutPlayerDAO {
                 e.printStackTrace();
             }
         }
-        return null;
+
+        return outPlayerRespDTOList;
     }
 
 }

@@ -44,7 +44,7 @@ public class StadiumService {
     public void 경기장조회() {
 
         // DAO 메소드 호출
-        List<Stadium> stadiumListPS = stadiumDAO.selectAll();
+        List<Stadium> stadiumListPS = stadiumDAO.findAll();
 
         // 값이 존재할 경우 실행
         if (!stadiumListPS.isEmpty() | stadiumListPS != null) {

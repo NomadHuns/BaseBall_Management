@@ -52,14 +52,14 @@ public class TeamService {
     public List<TeamRespDTO> 팀조회() {
 
         // 팀 목록 DAO 메소드 호출
-        List<Team> teamListPS = teamDAO.selectAll();
+        List<Team> teamListPS = teamDAO.findAll();
 
         // stadiumDAO.selectById 메소드를 사용하여 조인
         List<TeamRespDTO> teamRespDTOList = teamListPS.stream()
                 .map(team -> {
                     Connection connection = null;
                     try {
-                        return new TeamRespDTO(team, stadiumDAO.selectById(team.getStadiumId()));
+                        return new TeamRespDTO(team, stadiumDAO.findById(team.getStadiumId()));
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     } finally {

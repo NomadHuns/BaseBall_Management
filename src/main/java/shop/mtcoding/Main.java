@@ -2,6 +2,7 @@ package shop.mtcoding;
 
 import shop.mtcoding.dto.PlayerRespDTO;
 import shop.mtcoding.dto.TeamRespDTO;
+import shop.mtcoding.service.OutPlayerService;
 import shop.mtcoding.service.PlayerService;
 import shop.mtcoding.service.StadiumService;
 import shop.mtcoding.service.TeamService;
@@ -18,6 +19,7 @@ public class Main {
             StadiumService stadiumService = StadiumService.getInstance();
             TeamService teamService = TeamService.getInstance();
             PlayerService playerService = PlayerService.getInstance();
+            OutPlayerService outPlayerService = OutPlayerService.getInstance();
 
             // 기능 요청
             System.out.println("어떤 기능을 요청하시겠습니까?");
@@ -148,12 +150,19 @@ public class Main {
                     System.out.println("올바른 쿼리스트링으로 요청 바랍니다. : 선수목록?teamId=팀ID");
                 }
 
-
-
-
-
             } else if (requestToken[0].equals("퇴출등록")) {
                 System.out.println("퇴출 등록 메소드 실행");
+
+                // 선수 방출 service 메소드 호출
+                try {
+                    String result = outPlayerService.방출선수등록(requestToken[1]);
+                    System.out.println(result);
+
+                // 쿼리스트링 미입력 시
+                } catch (ArrayIndexOutOfBoundsException ae) {
+                    System.out.println("올바른 쿼리스트링으로 요청 바랍니다. : 퇴출등록?playerId=선수고유번호&reason=방출사유");
+                }
+
             } else if (requestToken[0].equals("퇴출목록")) {
                 System.out.println("퇴출 목록 메소드 실행");
             } else if (requestToken[0].equals("포지션별목록")) {

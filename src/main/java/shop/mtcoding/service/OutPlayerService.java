@@ -3,6 +3,7 @@ package shop.mtcoding.service;
 import shop.mtcoding.dao.OutPlayerDAO;
 import shop.mtcoding.dao.PlayerDAO;
 import shop.mtcoding.dao.TeamDAO;
+import shop.mtcoding.dto.OutPlayerRespDTO;
 import shop.mtcoding.dto.PlayerRespDTO;
 import shop.mtcoding.model.Player;
 
@@ -63,4 +64,11 @@ public class OutPlayerService {
         return "방출 선수 등록 성공";
     }
 
+    // 전체 선수 목록 불러오기
+    public List<OutPlayerRespDTO> 방출선수목록조회() {
+
+        // DAO 메소드 호출
+        List<OutPlayerRespDTO> outPlayerRespDTOList = outPlayerDAO.selectAll();
+        return outPlayerRespDTOList;
+    }
 }

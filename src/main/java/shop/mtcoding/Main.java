@@ -1,5 +1,6 @@
 package shop.mtcoding;
 
+import shop.mtcoding.dto.OutPlayerRespDTO;
 import shop.mtcoding.dto.PlayerRespDTO;
 import shop.mtcoding.dto.TeamRespDTO;
 import shop.mtcoding.service.OutPlayerService;
@@ -165,7 +166,37 @@ public class Main {
 
             } else if (requestToken[0].equals("퇴출목록")) {
                 System.out.println("퇴출 목록 메소드 실행");
-            } else if (requestToken[0].equals("포지션별목록")) {
+
+                System.out.println("선수 목록 메소드 실행");
+
+                // 퇴출 선수 조회 service 메소드 호출
+                List<OutPlayerRespDTO> outPlayerRespDTOList = outPlayerService.방출선수목록조회();
+
+                    // 결과 출력
+                    // 값이 존재할 경우 실행
+                    if (!outPlayerRespDTOList.isEmpty() | outPlayerRespDTOList != null) {
+
+                        // 헤더 로우 출력
+                        String headRow = "ID    | 선수명          | 포지션        | 퇴출사유      | 퇴출일";
+                        System.out.println(headRow);
+
+                        // 순환하면서 출력
+                        outPlayerRespDTOList.stream().forEach(
+                                outPlayerRespDTO -> {
+                                    String row = outPlayerRespDTO.getId()
+                                            + "     | "
+                                            + outPlayerRespDTO.getName()
+                                            + "         | "
+                                            + outPlayerRespDTO.getPosition()
+                                            + "         | "
+                                            + outPlayerRespDTO.getReason()
+                                            + "      | "
+                                            + outPlayerRespDTO.getCreatedAt();
+                                    System.out.println(row);
+                                }
+                        );
+                    }
+                } else if (requestToken[0].equals("포지션별목록")) {
                 System.out.println("포지션별 목록 메소드 실행");
             } else if (requestToken[0].equals("종료")) {
                 System.out.println("프로그램을 종료합니다....");

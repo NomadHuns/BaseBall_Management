@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c93bd8b1-ee6b-48da-8228-ea991510c0f5" name="Changes" comment="포지션별 선수 조회 기능 구현">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/OutPlayerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/OutPlayerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/PlayerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/PlayerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/StadiumDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/StadiumDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/TeamDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/dao/TeamDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/OutPlayerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/OutPlayerService.java" afterDir="false" />
+    <list default="true" id="c93bd8b1-ee6b-48da-8228-ea991510c0f5" name="Changes" comment="DAO select 메소드명 변경">
       <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/PlayerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/PlayerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/StadiumService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/StadiumService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/TeamService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/shop/mtcoding/service/TeamService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/shop/mtcoding/dao/StadiumDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/shop/mtcoding/dao/StadiumDaoTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +149,7 @@
       <workItem from="1685163784474" duration="13404000" />
       <workItem from="1685363540166" duration="4000" />
       <workItem from="1685425897594" duration="10706000" />
-      <workItem from="1685451929131" duration="1105000" />
+      <workItem from="1685451929131" duration="1473000" />
     </task>
     <task id="LOCAL-00001" summary="프로젝트 생성">
       <created>1685110781970</created>
@@ -264,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685440128855</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="DAO select 메소드명 변경">
+      <created>1685453146813</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1685453146813</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,6 +295,7 @@
     <MESSAGE value="선수 방출 등록 기능 구현" />
     <MESSAGE value="선수 방출 목록 조회 기능 구현" />
     <MESSAGE value="포지션별 선수 조회 기능 구현" />
-    <option name="LAST_COMMIT_MESSAGE" value="포지션별 선수 조회 기능 구현" />
+    <MESSAGE value="DAO select 메소드명 변경" />
+    <option name="LAST_COMMIT_MESSAGE" value="DAO select 메소드명 변경" />
   </component>
 </project>

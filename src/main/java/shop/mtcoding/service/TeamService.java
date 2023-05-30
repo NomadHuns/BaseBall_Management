@@ -40,7 +40,12 @@ public class TeamService {
         String stadiumIdValue = fields[0].split("=")[1];
         String nameValue = fields[1].split("=")[1];
 
-        int result = teamDAO.insert(Integer.parseInt(stadiumIdValue), nameValue);
+        Stadium stadiumPS = stadiumDAO.findById(Integer.parseInt(stadiumIdValue));
+        if (stadiumPS == null) {
+            return "존재하지 않는 경기장 고유번호입니다.";
+        }
+
+        int result = teamDAO.insert(stadiumPS.getId(), nameValue);
         if (result == 1) {
             return "성공";
         }

@@ -45,7 +45,12 @@ public class PlayerService {
         String nameValue = fields[1].split("=")[1];
         String positionValue = fields[2].split("=")[1];
 
-        if (playerDAO.findByTeamIdAndPosition(Integer.parseInt(teamIdValue), positionValue) != null) {
+        Team TeamPS = teamDAO.findById(Integer.parseInt(teamIdValue));
+        if (TeamPS == null) {
+            return "존재하지 않는 팀 고유번호입니다.";
+        }
+
+        if (playerDAO.findByTeamIdAndPosition(TeamPS.getId(), positionValue) != null) {
             return "해당 팀에 이미 동일한 포지션에 선수가 존재합니다.";
         }
 

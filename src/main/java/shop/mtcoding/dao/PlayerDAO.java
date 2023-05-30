@@ -280,4 +280,62 @@ public class PlayerDAO {
         return -1;
 
     }
+
+    public List<Player> findByPosition(String positionReq) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        // DBConnection 클래스로부터 커넥션 받아오기
+        try {
+            connection = DBConnection.getConnection();
+        } catch (Exception e) {
+            System.out.println("DB 접근에 실패하였습니다.");
+            e.printStackTrace();
+        }
+
+        try {
+            // 쿼리문 작성
+            String query = "SELECT * FROM player WHERE position = ? AND team_id IS NOT NULL ORDER BY team_id ASC";
+            statement = connection.prepareStatement(query);
+            statement.setString(1, positionReq);
+
+            // 쿼리문 실행
+            resultSet = statement.executeQuery();
+
+            // 실행 결과 Model로 파싱
+            List<Player> playerListPS = new ArrayList<>();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                int stadiumId = resultSet.getInt("team_id");
+                String name = resultSet.getString("name");
+                String position = resultSet.getString("position");
+                Timestamp createdAt = resultSet.getTimestamp("created_at");
+                Player playerPS = new Player(id, stadiumId, name, position, createdAt);
+                playerListPS.add(playerPS);
+            }
+            return playerListPS;
+        } catch (Exception e) {
+            System.out.println("쿼리문을 실행하는데 실패하였습니다.");
+            e.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (Exception e) {
+                System.out.println("자원을 해제하는데 실패하였습니다.");
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
 }
+

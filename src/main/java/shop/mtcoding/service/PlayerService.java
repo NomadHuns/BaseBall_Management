@@ -5,6 +5,7 @@ import shop.mtcoding.dao.PlayerDAO;
 import shop.mtcoding.dao.StadiumDAO;
 import shop.mtcoding.dao.TeamDAO;
 import shop.mtcoding.dto.PlayerRespDTO;
+import shop.mtcoding.dto.PositionRespDTO;
 import shop.mtcoding.dto.TeamRespDTO;
 import shop.mtcoding.model.Player;
 import shop.mtcoding.model.Team;
@@ -94,4 +95,17 @@ public class PlayerService {
         return playerRespDTOList;
     }
 
+    public PositionRespDTO 포지션별선수조회() {
+        // 팀 목록 조회
+        List<Team> teamListPS = teamDAO.selectAll();
+
+        // 포지션별 조회
+        // 응답할 DTO 생성
+        PositionRespDTO positionRespDTO = new PositionRespDTO(teamListPS, playerDAO.findByPosition("1루수"),
+                playerDAO.findByPosition("2루수"), playerDAO.findByPosition("3루수"),
+                playerDAO.findByPosition("포수"), playerDAO.findByPosition("투수"),
+                playerDAO.findByPosition("내야수"), playerDAO.findByPosition("외야수"));
+
+        return positionRespDTO;
+    }
 }

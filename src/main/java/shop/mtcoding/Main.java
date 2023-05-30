@@ -2,7 +2,10 @@ package shop.mtcoding;
 
 import shop.mtcoding.dto.OutPlayerRespDTO;
 import shop.mtcoding.dto.PlayerRespDTO;
+import shop.mtcoding.dto.PositionRespDTO;
 import shop.mtcoding.dto.TeamRespDTO;
+import shop.mtcoding.model.Player;
+import shop.mtcoding.model.Team;
 import shop.mtcoding.service.OutPlayerService;
 import shop.mtcoding.service.PlayerService;
 import shop.mtcoding.service.StadiumService;
@@ -198,6 +201,30 @@ public class Main {
                     }
                 } else if (requestToken[0].equals("포지션별목록")) {
                 System.out.println("포지션별 목록 메소드 실행");
+
+                // 팀 및 선수 목록 불러오기
+                PositionRespDTO positionRespDTO = playerService.포지션별선수조회();
+
+                // 조회 실패할 경우 오류 메시지
+                if (positionRespDTO == null) {
+                    System.out.println("서버 문제 : 선수 리스트 불러올수 없음");
+                }
+
+                // 팀 리스트 출력
+                List<Team> teamList = positionRespDTO.getTeamList();
+                System.out.print("포지션    |");
+                teamList.stream().forEach(
+                        team -> {
+                            System.out.print(team.getName() + "   | ");
+                        }
+                );
+                System.out.println();
+
+                포지션별출력("1루수", positionRespDTO.getFirstBaseManList(), positionRespDTO.getTeamList().size());
+                포지션별출력("2루수", positionRespDTO.getSecondBaseManList(), positionRespDTO.getTeamList().size());
+                포지션별출력("3루수", positionRespDTO.getThirdBaseManList(), positionRespDTO.getTeamList().size());
+                포지션별출력("포수", positionRespDTO.getCatcherList(), positionRespDTO.getTeamList().size());
+
             } else if (requestToken[0].equals("종료")) {
                 System.out.println("프로그램을 종료합니다....");
                 break;
@@ -218,5 +245,17 @@ public class Main {
             }
         }
         System.out.println("프로그램이 종료되었습니다.");
+    }
+
+    public static void 포지션별출력(String position, List<Player> playerList, int teamSize) {
+        System.out.print(position + "    | ");
+        if (playerList == null || playerList.isEmpty()) {
+            System.out.println("");
+            return;
+        }
+        for (int i = 0; i < teamSize; i++) {
+            System.out.print(playerList.get(i).getName() + "  | ");
+        }
+        System.out.println();
     }
 }
